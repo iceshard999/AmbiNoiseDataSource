@@ -145,12 +145,12 @@ class AmbiNoiseDataSource:
                 tr.decimate(mul,strict_length=False,no_filter=True)
                 tr.stats.sampling_rate = newRate
                 newSAC.append(tr)    
-        if newSAC.count()>0:
+        if newSAC.count() > 0:
             newSAC.merge(method=0,fill_value="interpolate")
-            newSAC.detrend
-            tB = UTCDateTime(year=year,julday=jday,hour=0,minute=0,second=0,microsecond=0)
+            newSAC.detrend()
+            tB = UTCDateTime(year=year, julday=jday, hour=0, minute=0, second=0, microsecond=0)
             tE = tB + 3600*24
-            new=newSAC.trim(starttime=tB,endtime=tE,pad=True,fill_value=0,nearest_sample=False)
+            new=newSAC.trim(starttime=tB, endtime=tE, pad=True, fill_value=0, nearest_sample=False)
             return new
         else:
             return newSAC
